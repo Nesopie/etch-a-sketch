@@ -8,18 +8,45 @@ function deleteChild() {
     }
 }
 
+const button = document.querySelector(".size");
+
+let rainbowClicked = false;
+let eraserClicked = false;
+
+const rainbow = document.querySelector(".rainbow");
+let hue = 100;
+
+rainbow.addEventListener("click", () => {
+    rainbowClicked = true;
+    eraserClicked = false;
+});
+
+const eraser = document.querySelector(".eraser");
+
+eraser.addEventListener("click", () => {
+    rainbowClicked = false;
+    eraserClicked = true;
+});
+
 for(let i = 0; i < 256; i++) {
     let div = document.createElement("div");
     div.addEventListener("mouseover", () => {
-        let r = (Math.floor(Math.random() * 256)).toString(16);
-        let g = (Math.floor(Math.random() * 256)).toString(16);
-        let b = (Math.floor(Math.random() * 256)).toString(16);
-        div.style.backgroundColor = '#' + r + g + b;
+        if(rainbowClicked) {
+            div.style.backgroundColor = "hsl(" + hue + ",100%,50%)";
+            console.log("hsl(" + hue + ",100%,100%)");
+            hue += 10;
+            hue %= 360;
+        }else if(eraserClicked) {
+            div.style.backgroundColor = "#ffffff";
+        }else {
+            let r = (Math.floor(Math.random() * 256)).toString(16);
+            let g = (Math.floor(Math.random() * 256)).toString(16);
+            let b = (Math.floor(Math.random() * 256)).toString(16);
+            div.style.backgroundColor = '#' + r + g + b;
+        }
     });
     grid.appendChild(div);
 };
-
-const button = document.querySelector("button");
 
 button.addEventListener("click", () => {
     let size = prompt("Enter the size");
@@ -33,11 +60,19 @@ button.addEventListener("click", () => {
     for(let i = 1; i <= size; i++) {
         for(let j = 1; j <= size; j++) {
             let div = document.createElement("div");
-            div.addEventListener("click", () => {
-                let r = (Math.floor(Math.random() * 256)).toString(16);
-                let g = (Math.floor(Math.random() * 256)).toString(16);
-                let b = (Math.floor(Math.random() * 256)).toString(16);
-                div.style.backgroundColor = '#' + r + g + b;
+            div.addEventListener("mouseover", () => {
+                if(rainbowClicked) {
+                    div.style.backgroundColor = "hsl(" + hue + ",100%,100%)";
+                    hue += 10;
+                    hue %= 360;
+                }else if(eraserClicked) {
+                    div.style.backgroundColor = "#ffffff";
+                }else {
+                    let r = (Math.floor(Math.random() * 256)).toString(16);
+                    let g = (Math.floor(Math.random() * 256)).toString(16);
+                    let b = (Math.floor(Math.random() * 256)).toString(16);
+                    div.style.backgroundColor = '#' + r + g + b;
+                }
             });
             grid.appendChild(div);
         };
