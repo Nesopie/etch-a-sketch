@@ -62,7 +62,7 @@ button.addEventListener("click", () => {
             let div = document.createElement("div");
             div.addEventListener("mouseover", () => {
                 if(rainbowClicked) {
-                    div.style.backgroundColor = "hsl(" + hue + ",100%,100%)";
+                    div.style.backgroundColor = "hsl(" + hue + ",100%,50%)";
                     hue += 10;
                     hue %= 360;
                 }else if(eraserClicked) {
