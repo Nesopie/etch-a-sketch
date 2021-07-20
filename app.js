@@ -24,7 +24,7 @@ const button = document.querySelector("button");
 button.addEventListener("click", () => {
     let size = prompt("Enter the size");
     size = +size;
-    if(size > 50) {
+    if(size > 50 || size < 1) {
         alert("Enter any size from 1 to 50");
         return;
     }
