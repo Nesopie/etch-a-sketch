@@ -33,14 +33,11 @@ button.addEventListener("click", () => {
     for(let i = 1; i <= size; i++) {
         for(let j = 1; j <= size; j++) {
             let div = document.createElement("div");
-            div.addEventListener("mouseover", () => {
+            div.addEventListener("click", () => {
                 let r = (Math.floor(Math.random() * 256)).toString(16);
                 let g = (Math.floor(Math.random() * 256)).toString(16);
                 let b = (Math.floor(Math.random() * 256)).toString(16);
                 div.style.backgroundColor = '#' + r + g + b;
-            });
-            div.addEventListener("dblclick", () => {
-                div.style.background = "#000000";
             });
             grid.appendChild(div);
         };
