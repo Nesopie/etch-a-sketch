@@ -39,6 +39,9 @@ button.addEventListener("click", () => {
                 let b = (Math.floor(Math.random() * 256)).toString(16);
                 div.style.backgroundColor = '#' + r + g + b;
             });
+            div.addEventListener("dblclick", () => {
+                div.style.background = "#000000";
+            });
             grid.appendChild(div);
         };
     };
